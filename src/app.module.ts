@@ -6,6 +6,8 @@ import { AuthModule } from './auth/auth.module';
 import { DataSource } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConfig } from './config/configuration';
+import { MailModule } from './mail/mail.module';
+
 
 @Module({
     imports: [
@@ -20,6 +22,7 @@ import { databaseConfig } from './config/configuration';
         }),
         AuthModule,
         UserModule,
+        MailModule,
     ],
     controllers: [AppController],
     providers: [AppService],

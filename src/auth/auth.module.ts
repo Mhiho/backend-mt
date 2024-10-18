@@ -8,6 +8,8 @@ import { LocalStrategy } from './local.strategy';
 import { User } from 'src/user/user.entity';
 import { UsersController } from 'src/user/user.controller';
 import { secretOrKey } from 'src/config/configuration';
+import { UserService } from 'src/user/user.service';
+import { MailService } from 'src/mail/mail.service.spec';
 
 @Module({
     imports: [
@@ -21,7 +23,7 @@ import { secretOrKey } from 'src/config/configuration';
             }),
         }),
     ],
-    providers: [LocalStrategy, JwtStrategy, AuthService],
+    providers: [LocalStrategy, JwtStrategy, AuthService, UserService, MailService],
     controllers: [AuthController, UsersController],
 })
 export class AuthModule {}
