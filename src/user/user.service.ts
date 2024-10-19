@@ -4,7 +4,7 @@ import { User } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create.user.dto';
 import { AuthService } from 'src/auth/auth.service';
-import { MailService } from 'src/mail/mail.service.spec';
+import { MailService } from 'src/mail/mail.service';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()

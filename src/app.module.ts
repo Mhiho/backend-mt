@@ -5,24 +5,19 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { DataSource } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { databaseConfig } from './config/configuration';
 import { MailModule } from './mail/mail.module';
-
+import { MaptileModule } from './maptile/maptile.module';
+import { dataSourceOptions } from 'data-source';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
-            type: 'postgres',
-            host: databaseConfig.host,
-            port: databaseConfig.port,
-            username: databaseConfig.username,
-            password: databaseConfig.password,
-            entities: databaseConfig.entities,
-            synchronize: databaseConfig.synchronize,
-        }),
+        TypeOrmModule.forRoot(dataSourceOptions),
         AuthModule,
         UserModule,
         MailModule,
+        MaptileModule,
+        DatabaseModule,
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -9,7 +9,7 @@ import { User } from 'src/user/user.entity';
 import { UsersController } from 'src/user/user.controller';
 import { secretOrKey } from 'src/config/configuration';
 import { UserService } from 'src/user/user.service';
-import { MailService } from 'src/mail/mail.service.spec';
+import { MailService } from 'src/mail/mail.service';
 
 @Module({
     imports: [
