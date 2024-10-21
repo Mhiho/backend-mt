@@ -33,10 +33,13 @@ export class MaptileService {
         console.log(village);
 
         const ts: number = Date.now();
-        const diff: number = ts - Number(village.startgatherresources);
+        const diff: number = Math.floor((ts - Number(village.startgatherresources)) / 1000);
+        const food = Math.floor((diff / 60) * village.foodrate);
+        village.food = food;
         console.log(diff);
-        village.foodstart = diff + village.foodstart;
-        return village.foodstart;
+        village.startgatherresources = ts + '';
+        console.log(village.startgatherresources);
+        return village.food;
     }
 
     remove(id: number) {

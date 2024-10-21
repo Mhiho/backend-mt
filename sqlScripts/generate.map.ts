@@ -144,22 +144,22 @@ export const generateMap = async () => {
         for (let j = 1; j < count; j++) {
             const luck = Math.floor(Math.random() * (5 - 1) + 1);
             await client.query(
-                `UPDATE maptile SET foodstart = 50 *ROUND(ratcreatures+wilddogcreatures*1.5+serpentcreatures*2+rhinocreatures*3+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
+                `UPDATE maptile SET food = 50 *ROUND(ratcreatures+wilddogcreatures*1.5+serpentcreatures*2+rhinocreatures*3+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
             );
             await client.query(
-                `UPDATE maptile SET woodstart = 50 *ROUND(ratcreatures+wilddogcreatures*1.5+serpentcreatures*2+rhinocreatures*3+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
+                `UPDATE maptile SET wood = 50 *ROUND(ratcreatures+wilddogcreatures*1.5+serpentcreatures*2+rhinocreatures*3+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
             );
             await client.query(
-                `UPDATE maptile SET ironstart = 25 *ROUND(ratcreatures+wilddogcreatures*1.5+serpentcreatures*2+rhinocreatures*3+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
+                `UPDATE maptile SET iron = 25 *ROUND(ratcreatures+wilddogcreatures*1.5+serpentcreatures*2+rhinocreatures*3+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
             );
             await client.query(
-                `UPDATE maptile SET stonestart = 15 *ROUND(rhinocreatures*6+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
+                `UPDATE maptile SET stone = 15 *ROUND(rhinocreatures*6+dragoncreatures*30) WHERE positionx = ${i} AND positiony = ${j};`,
             );
             await client.query(
-                `UPDATE maptile SET silverstart = 10 *ROUND(rhinocreatures*3+dragoncreatures*10) WHERE positionx = ${i} AND positiony = ${j};`,
+                `UPDATE maptile SET silver = 10 *ROUND(rhinocreatures*3+dragoncreatures*10) WHERE positionx = ${i} AND positiony = ${j};`,
             );
             await client.query(
-                `UPDATE maptile SET crystalstart = (crystalstart + ${luck}) *ROUND(dragoncreatures*2) WHERE terraintype = 'magicland' AND positionx = ${i} AND positiony = ${j};`,
+                `UPDATE maptile SET crystal = (crystal + ${luck}) *ROUND(dragoncreatures*2) WHERE terraintype = 'magicland' AND positionx = ${i} AND positiony = ${j};`,
             );
         }
     }

@@ -23,52 +23,34 @@ export class Maptile {
     @Column({ type: 'enum', enum: Terrain })
     terraintype: Terrain;
 
-    @Column({ default: 0 })
-    foodfeed: number;
-
-    @Column({ default: 0 })
-    ironfeed: number;
-
-    @Column({ default: 0 })
-    stonefeed: number;
-
-    @Column({ default: 0 })
-    woodfeed: number;
-
-    @Column({ default: 0 })
-    silverfeed: number;
-
-    @Column({ default: 0 })
-    crystalfeed: number;
-
     @Column({ default: 50 })
-    foodstart: number;
+    food: number;
 
     @Column({ default: 10 })
-    ironstart: number;
+    iron: number;
 
     @Column({ default: 15 })
-    stonestart: number;
+    stone: number;
 
     @Column({ default: 50 })
-    woodstart: number;
+    wood: number;
 
     @Column({ default: 3 })
-    silverstart: number;
+    silver: number;
 
     @Column({ default: 0 })
-    crystalstart: number;
+    crystal: number;
 
-    @Column({ default: 5 })
+    @Column({ default: 1 })
     foodrate: number;
 
-    @Column({ default: 1 })
+    @Column({ default: 0 })
     ironrate: number;
 
-    @Column({ default: 1 })
+    @Column({ default: 0 })
     stonerate: number;
 
-    @Column({ default: 5 })
+    @Column({ default: 1 })
     woodrate: number;
 
     @Column({ default: 0 })
