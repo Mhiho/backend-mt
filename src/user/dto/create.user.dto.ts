@@ -4,6 +4,7 @@ export enum Race {
     LORIS = 'loris',
     IBIS = 'ibis',
     WILDS = 'wilds',
+    NEUTRAL = 'neutral',
 }
 export class CreateUserDto {
     @IsNotEmpty()

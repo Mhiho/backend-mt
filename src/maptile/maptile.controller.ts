@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { MaptileService } from './maptile.service';
 import { CreateMaptileDto } from './dto/create-maptile.dto';
-import { UpdateMaptileDto } from './dto/update-maptile.dto';
 
 @Controller('maptile')
 export class MaptileController {
@@ -18,13 +17,13 @@ export class MaptileController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.maptileService.findOne(+id);
+    findOne(@Param('id') id: number) {
+        return this.maptileService.findOne(id);
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() updateMaptileDto: UpdateMaptileDto) {
-        return this.maptileService.update(+id, updateMaptileDto);
+    update(@Param('id') id: number) {
+        return this.maptileService.update(id);
     }
 
     @Delete(':id')

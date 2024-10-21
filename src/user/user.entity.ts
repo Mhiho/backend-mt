@@ -1,5 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
 import { Race } from './dto/create.user.dto';
+
+type Message = {
+    title: string;
+    content: string;
+    correspondant: string;
+    received: boolean;
+    sent: boolean;
+    read: boolean;
+};
 
 @Entity({ name: 'user' })
 export class User {
@@ -13,8 +22,26 @@ export class User {
     email: string;
 
     @Column()
-    race: Race;
+    password: string;
 
     @Column()
-    password: string;
+    race: Race;
+
+    @Column({ type: 'integer', array: true })
+    ownvillages: number[];
+
+    @Column({ type: 'integer', array: true, default: [] })
+    onwcastles: number[];
+
+    @Column({ nullable: true })
+    gamestart: string;
+
+    @Column({ default: './avatars/warior' })
+    avatarpath: string;
+
+    @Column({ default: 1 })
+    dragoncrystals: number;
+
+    @Column({ type: 'jsonb', default: [] })
+    messages: Message[];
 }

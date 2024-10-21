@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Ibi {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn({ type: 'integer' })
+    id: number;
 
     @Column()
     name: string;
@@ -12,13 +12,25 @@ export class Ibi {
     attack: number;
 
     @Column()
-    attackVsBuilding: number;
+    attackvsbuilding: number;
+
+    @Column({ default: 0 })
+    attackbonus: number;
+
+    @Column({ default: 0 })
+    defensebonus: number;
 
     @Column()
     defense: number;
 
     @Column()
+    carry: number;
+
+    @Column()
     hitpoints: number;
+
+    @Column()
+    mana: number;
 
     @Column()
     exp: number;

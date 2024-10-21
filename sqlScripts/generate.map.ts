@@ -1,5 +1,5 @@
-import { Terrain } from './src/maptile/enums.maptile';
-import { databaseConfig as config } from './src/config/configuration';
+import { Terrain } from '../src/maptile/enums.maptile';
+import { databaseConfig as config } from '../src/config/configuration';
 import { Client } from 'pg';
 
 export const generateMap = async () => {
@@ -51,12 +51,43 @@ export const generateMap = async () => {
             // eslint-disable-next-line prefer-const
             let terrainType = terrainGen[terrainRand];
             await client.query(
-                `INSERT INTO maptile (positionx , positiony, terraintype) VALUES (${i}, ${j}, '${terrainType}');`,
+                `INSERT INTO maptile (positionx , positiony, terraintype, startgatherresources) VALUES (${i}, ${j}, '${terrainType}', '${Date.now()}');`,
             );
-            console.log(`row added with value terraintype: ${terrainType}`);
+            console.log(`row added with time: ${Date.now()}`);
         }
     }
     console.log('generate done');
+
+    // PONIŻEJ DOPISAĆ LOGIKE DLA avaiblestartslot - czyli żeby userzy byli rozrzuceni po planszy odpowiednio
+    // const availableSlots = await client.query(
+    //     `SELECT positiony, positionx from maptile WHERE terraintype = 'grassland' OR terraintype = 'fields' OR terraintype = 'forest' `,
+    // );
+    // const filteredAvailableSlots = [];
+    // for (let i = 1; i < count; i++) {
+    //     if (
+    //         Math.abs(availableSlots.rows[i].positionx) -
+    //             Math.abs(availableSlots.rows[i + 1].positionx) >
+    //         5
+    //     )
+    //         filteredAvailableSlots.push(availableSlots.rows[i], availableSlots.rows[i + 1]);
+    // }
+    // console.log(filteredAvailableSlots);
+    // // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // const doubleFiltered = [];
+    // for (let i = 1; i < filteredAvailableSlots.length; i++) {
+    //     if (
+    //         Math.abs(filteredAvailableSlots[i].positiony) -
+    //             Math.abs(filteredAvailableSlots[i + 1].positiony) >
+    //         5 * setXY
+    //     )
+    //         doubleFiltered.push(filteredAvailableSlots[i]);
+    // }
+    await client.query(
+        `UPDATE maptile SET avaiblestartslot = true WHERE terrainType = 'grassland' OR terrainType = 'forest' OR terrainType = 'fields'`,
+    );
+    console.log('tymczasowe avaiblestartslot = true gotowe');
+    //a narazie jest tylko avaible slots
+    // console.log(doubleFiltered);
     for (let i = 1; i < count; i++) {
         for (let j = 1; j < count; j++) {
             // dla uroczysk

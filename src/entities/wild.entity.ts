@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Wild {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn({ type: 'integer' })
+    id: number;
 
     @Column()
     name: string;
@@ -12,10 +12,22 @@ export class Wild {
     attack: number;
 
     @Column()
-    attackVsBuilding: number;
+    attackvsbuilding: number;
 
     @Column()
     defense: number;
+
+    @Column({ default: 0 })
+    attackbonus: number;
+
+    @Column({ default: 0 })
+    defensebonus: number;
+
+    @Column({ default: 0 })
+    mana: number;
+
+    @Column()
+    carry: number;
 
     @Column()
     hitpoints: number;

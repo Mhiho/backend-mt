@@ -1,17 +1,18 @@
 import { Race } from 'src/user/dto/create.user.dto';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { MapTerrainEnum, Terrain } from '../enums.maptile';
+import { Terrain } from '../enums.maptile';
+// import { User } from 'src/user/user.entity';
 
 @Entity()
 export class Maptile {
     @PrimaryGeneratedColumn({ type: 'integer' })
     id: number;
 
-    @Column({ type: 'enum', enum: Race, nullable: true })
-    race: Terrain;
+    @Column({ default: Race.NEUTRAL })
+    race: Race;
 
-    @Column({ type: 'enum', enum: MapTerrainEnum, default: MapTerrainEnum.NEUTRAL })
-    owned: MapTerrainEnum;
+    @Column({ default: 'nobody' })
+    owned: string;
 
     @Column()
     positionx: number;
@@ -58,23 +59,23 @@ export class Maptile {
     @Column({ default: 0 })
     crystalstart: number;
 
-    @Column({ default: 0 })
-    foodbonus: number;
+    @Column({ default: 5 })
+    foodrate: number;
+
+    @Column({ default: 1 })
+    ironrate: number;
+
+    @Column({ default: 1 })
+    stonerate: number;
+
+    @Column({ default: 5 })
+    woodrate: number;
 
     @Column({ default: 0 })
-    ironbonus: number;
+    silverrate: number;
 
     @Column({ default: 0 })
-    stonebonus: number;
-
-    @Column({ default: 0 })
-    woodbonus: number;
-
-    @Column({ default: 0 })
-    silverbonus: number;
-
-    @Column({ default: 0 })
-    magicbonus: number;
+    magicrate: number;
 
     @Column({ default: 0 })
     soldierloris: number;
@@ -196,8 +197,11 @@ export class Maptile {
     @Column({ default: 0 })
     dragoncreatures: number;
 
-    @Column({ default: 0 })
-    startgatherresources: number;
+    @Column({ nullable: true })
+    startgatherresources: string;
+
+    @Column({ default: false })
+    avaiblestartslot: boolean;
 
     @Column({ default: false })
     ancientartifact: boolean;

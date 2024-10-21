@@ -1,10 +1,3 @@
-export enum MapTerrainEnum {
-    LORIS = 'loris',
-    IBIS = 'ibis',
-    WILDS = 'wilds',
-    NEUTRAL = 'neutral',
-}
-
 export enum Terrain {
     FOREST = 'forest',
     STONE = 'stone',

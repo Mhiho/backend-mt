@@ -8,7 +8,7 @@
     "scripts": {
         "build": "nest build",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-        "start": "concurrently \"nest start --watch\" \"ts-node ./generate.map.ts\"",
+        "start": "concurrently \"nest start --watch\" \"ts-node ./sqlScripts/generate.map.ts\" \"ts-node ./sqlScripts/generate.units.ts\"",
         "start:dev": "nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
@@ -20,7 +20,9 @@
         "test:e2e": "jest --config ./test/jest-e2e.json",
         "prepare": "husky",
         "typeorm": "npm run build && npx typeorm -d dist/data-source.js",
-        "generate-map": "ts-node ./generate.map.ts"
+        "generate-map": "ts-node ./sqlScripts/generate.map.ts",
+        "generate-units": "ts-node ./sqlScripts/generate.units.ts",
+        "new-user": "ts-node ./sqlScripts/user.init.ts"
     },
     "husky": {
         "hooks": {}

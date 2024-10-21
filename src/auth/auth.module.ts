@@ -10,10 +10,11 @@ import { UsersController } from 'src/user/user.controller';
 import { secretOrKey } from 'src/config/configuration';
 import { UserService } from 'src/user/user.service';
 import { MailService } from 'src/mail/mail.service';
+import { Maptile } from 'src/maptile/entities/maptile.entity';
 
 @Module({
     imports: [
-        TypeOrmModule.forFeature([User]),
+        TypeOrmModule.forFeature([User, Maptile]),
         JwtModule.registerAsync({
             useFactory: () => ({
                 secret: secretOrKey,

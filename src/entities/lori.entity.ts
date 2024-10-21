@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Lori {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn({ type: 'integer' })
+    id: number;
 
     @Column()
     name: string;
@@ -12,13 +12,25 @@ export class Lori {
     attack: number;
 
     @Column()
-    attackVsBuilding: number;
+    attackvsbuilding: number;
 
     @Column()
     defense: number;
 
+    @Column({ default: 0 })
+    attackbonus: number;
+
+    @Column({ default: 0 })
+    defensebonus: number;
+
+    @Column({ default: 0 })
+    mana: number;
+
     @Column()
     hitpoints: number;
+
+    @Column()
+    carry: number;
 
     @Column()
     exp: number;

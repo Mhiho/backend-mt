@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { FindOperator, Repository } from 'typeorm';
 import { AuthService } from 'src/auth/auth.service';
 import { CreateUserDto } from './dto/create.user.dto';
 import { User } from './user.entity';
@@ -22,5 +22,9 @@ export class UsersController {
     @Get()
     async findAll() {
         return await this.userService.findAll();
+    }
+    @Get(':name')
+    async findOne(@Body() username: string) {
+        return await this.userService.findOneByName(username);
     }
 }
