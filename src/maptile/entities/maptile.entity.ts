@@ -39,6 +39,9 @@ export class Maptile {
     silver: number;
 
     @Column({ default: 0 })
+    magic: number;
+
+    @Column({ default: 0 })
     crystal: number;
 
     @Column({ default: 1 })
@@ -153,7 +156,7 @@ export class Maptile {
     dragonwild: number;
 
     @Column({ default: 0 })
-    barackswilds: number;
+    barrackswilds: number;
 
     @Column({ default: false })
     witchhutwilds: boolean;

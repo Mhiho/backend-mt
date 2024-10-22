@@ -42,19 +42,28 @@ export class UserService {
             where: { avaiblestartslot: true },
         });
         const villageIndex = Math.floor(Math.random() * allMapSlotsAvaible.length);
-        console.log(villageIndex);
         const firstVillage = await this.maptileRepository.findOne({ where: { id: villageIndex } });
-        console.log(firstVillage);
         firstVillage.owned = createUserDto.username;
         firstVillage.race = createUserDto.race;
-
+        firstVillage.food = 50;
+        firstVillage.wood = 50;
+        firstVillage.stone = 10;
+        firstVillage.iron = 0;
+        firstVillage.silver = 1;
+        firstVillage.foodrate = 3;
+        firstVillage.woodrate = 3;
+        firstVillage.stonerate = 0;
+        firstVillage.ironrate = 0;
+        firstVillage.silverrate = 0;
         user.ownvillages = [firstVillage.id];
         user.gamestart = String(Date.now());
+        firstVillage.startgatherresources = user.gamestart;
 
         // const token = this.authService.getTokenForUser(user);
         // const mailToken = await bcrypt.hash(Date.now() + '', 10);
         console.log(user);
         await this.userRepository.save(user);
+        await this.maptileRepository.save(firstVillage);
         // await this.mailService.sendUserConfirmation(user, mailToken);
         return {
             message: 'user created',

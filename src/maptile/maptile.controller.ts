@@ -23,7 +23,7 @@ export class MaptileController {
 
     @Patch(':id')
     update(@Param('id') id: number) {
-        return this.maptileService.update(id);
+        return this.maptileService.updateResources(id);
     }
 
     @Delete(':id')
